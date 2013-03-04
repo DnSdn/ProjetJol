@@ -12,6 +12,16 @@ outputFile = file(outputFileName, "w")
 inputFilesName = os.path.join(dir, "mdp_temporaire.csv") 
 inputFiles = open(inputFilesName)
 
+#On lance un navigateur et on ouvre la page web
+
+openApp("c:\\Program Files\\Internet Explorer\\iexplore.exe")
+wait(Pattern("1361525382545.png").similar(0.83))
+hover(Pattern("1361525382545.png").similar(0.83).targetOffset(-126,3))
+click(Pattern("1361525382545.png").similar(0.83).targetOffset(-126,3))
+paste("http://noee-s2e-srv1:8592/ind_sge_fra/start.swe?SWECmd=Start&SWEHo=noee-s2e-srv1")
+click(Pattern("1361525575705.png").similar(0.76).targetOffset(-1,0))
+    
+
 # on parcourt les mots de passe
 
 lines = inputFiles.readlines()
@@ -43,7 +53,8 @@ for line in lines:
         find(Pattern("acceptecgu.png").similar(0.88).targetOffset(-74,17))
         hover(Pattern("acceptecgu.png").similar(0.88).targetOffset(-74,17))
         wait(2)
-        click(Pattern("cliqueacccgu.png").similar(0.81).targetOffset(-4,-3)) 
+        click(Pattern("cliqueacccgu.png").similar(0.81).targetOffset(-4,-3))
+        wait(2)
         
     hover(Pattern("1359368486291.png").similar(0.84).targetOffset(32,1))
     click(Pattern("1359368486291.png").similar(0.84).targetOffset(32,1))
