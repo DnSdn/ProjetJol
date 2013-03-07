@@ -94,11 +94,14 @@ for line in inputFile.readlines():
     # on met le mot de passe dans le presse-papier
     doubleClick(Pattern("MotdePease.png").similar(0.92).targetOffset(37,0))
     wait(1)
-    type('c', KeyModifier.CTRL)
-    mdp_temporaire = Env.getClipboard().strip()
-    print(num_compte + ";" + mdp_temporaire + ";" + type_tcc)
-    # on écrit le résultat dans le fichier de sortie
-    outputFile.write(num_compte + ";" + mdp_temporaire + "\n");
+    try:
+        type('c', KeyModifier.CTRL)
+        mdp_temporaire = Env.getClipboard().strip()
+        print(num_compte + ";" + mdp_temporaire + ";" + type_tcc)
+        # on écrit le résultat dans le fichier de sortie
+        outputFile.write(num_compte + ";" + mdp_temporaire + "\n");
+    except CopierCollerError :
+        print ("Sikuli a rencontré une erreur ou le délai d attente est dépassé!")
     # end if exists
 inputFile.close() # close file
 outputFile.close() # close file
